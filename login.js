@@ -1,29 +1,28 @@
-var userEmail = document.getElementById("log-email");
-var userPassword = document.getElementById("log-password");
-
 var loginButton = document.getElementById("login-button");
 loginButton.addEventListener("click", userLogin);
 
 
 
-function userLogin(userEmail, userPassword) {
+function userLogin() {
+    var userEmail = document.getElementById("log-email");
+    var userPassword = document.getElementById("log-password");
     var foundEmail = "";
     var foundPass = "";
     if (userPassword.length == 0 || userEmail.length == 0) {
         // return error here, please enter a valid email and password
-        document.getElementById("login-output").innerHTML = "Invalid Email or Password, please try again";
+        document.getElementById("login-output").textContent   = "Invalid Email or Password, please try again.";
     } else {
         //connect to db here, can't be done till db details exist
         //search db for email, cant be done till db details exist
         if (foundEmail == "") {
             //return error, no email exists
-            document.getElementById("login-output").innerHTML = "Invalid Email or Password, please try again";
+            document.getElementById("login-output").textContent   = "Invalid Email or Password, please try again.";
         } else {
             if (userPassword === foundPass) { //triple = for case sensitiveness
                 //logged in!
             } else {
                 //error, incorrect username or password entered
-                document.getElementById("login-output").innerHTML = "Invalid Email or Password, please try again";
+                document.getElementById("login-output").textContent   = "Invalid Email or Password, please try again.";
             }
         }
     }
