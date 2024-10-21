@@ -1,3 +1,6 @@
+var userEmail = document.getElementById("log-email");
+var userPassword = document.getElementById("log-password");
+
 function login(email, password) {
     const user = {email: email, password: password};
     //access database, for now say database gives the following data
