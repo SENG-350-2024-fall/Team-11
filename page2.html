@@ -3,22 +3,17 @@
 <head>
     <title>Mister ED</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="auth.js"></script> <!-- authentication stuff -->
+    <script src="auth.js"></script>
     <script>
-        // Redirect to the appropriate page based on login status
         window.onload = function() {
-            if (checkLoginStatus()) {
-                window.location.href = "index-in.html";  // Redirect to logged-in home
-            } else {
-                //do nothing
-            }
+            enforceLogin();  // Redirect if not logged in
         };
     </script>
 </head>
 <body> 
     <div class="topnav">
-        <a class="active" href="index.html">Home</a>
-        <a href="page2.html">Another Page</a>
+        <a href="index.html">Home</a>
+        <a class="active" href="page2.html">Another Page</a>
         <div class="topnav-login">
             <a href="login.html">Log In</a>
         </div>
@@ -28,7 +23,8 @@
     </div>
     <main>
         <div style="margin-left: 3%">
-            <p id="logged-status">You are not logged in :(</p>
+            <p>You are still not logged in!</p>
+            <p>This page remains empty for now.</p>
         </div>
     </main>
     <footer>
