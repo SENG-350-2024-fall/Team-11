@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mister ED</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="auth.js"></script> <!-- authentication stuff -->
+    <script>
+        window.onload = function() { //call upon loading window, are you logged in or out?
+            updateLoginStatus();  // Function from auth.js to update the status text
+        };
+    </script>
+</head>
+<body> 
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="page2.html">Another Page</a>
+        <div class="topnav-login">
+            <a href="login.html">Log In</a>
+        </div>
+    </div>
+    <div style="padding-left:16px">
+        <h1>Welcome to Mister ED</h1>
+    </div>
+    <main>
+        <div style="margin-left: 3%">
+            <p id="logged-status">You are logged in!!!</p>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 by SENG350 Group 11. All rights reserved.</p>
+    </footer>
+</body>
+</html>
