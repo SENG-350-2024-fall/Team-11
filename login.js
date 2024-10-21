@@ -17,6 +17,7 @@ function userLogin() {
         if (foundEmail == "") {
             //return error, no email exists
             document.getElementById("login-output").textContent   = "Invalid Email or Password, please try again.";
+            window.location.href = "home.html";
         } else {
             if (userPassword === foundPass) { //triple = for case sensitiveness
                 //logged in!
@@ -29,6 +30,20 @@ function userLogin() {
 
 }
 
+function loggedIn(name, value, hours) {
+    let expires = "";
+    if (hours) {
+        const date = new Date();
+        date.setTime(date.getTime() + (hours * 60 * 60 * 1000)); //expires after 1 hour
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function userLogout() {
+    setCookie("loggedIn", "", -1);  // Expire the cookie
+    window.location.href = "home.html";  // Redirect to login page after logout
+}
 
 
 

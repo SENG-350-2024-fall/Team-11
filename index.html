@@ -3,6 +3,17 @@
 <head>
     <title>Mister ED</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="auth.js"></script> <!-- authentication stuff -->
+    <script>
+        // Redirect to the appropriate page based on login status
+        window.onload = function() {
+            if (checkLoginStatus()) {
+                window.location.href = "index-in.html";  // Redirect to logged-in home
+            } else {
+                //do nothing
+            }
+        };
+    </script>
 </head>
 <body> 
     <div class="topnav">
@@ -17,7 +28,7 @@
     </div>
     <main>
         <div style="margin-left: 3%">
-            <p>You are not logged in :(</p>
+            <p id="logged-status">You are not logged in :(</p>
         </div>
     </main>
     <footer>

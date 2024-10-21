@@ -3,6 +3,12 @@
 <head>
     <title>Mister ED</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="auth.js"></script>
+    <script>
+        window.onload = function() {
+            enforceLogin();  // Redirect if not logged in
+        };
+    </script>
 </head>
 <body> 
     <div class="topnav">
