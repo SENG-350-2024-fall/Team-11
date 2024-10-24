@@ -6,4 +6,4 @@ ensure you are in the Team-11 folder locally <br>
 run:    http-server <br>
 go to (in any browser): localhost:8080 <br><br>
 
-**If you are having issues with localhost:8080, please clear your chashe and try again (crtl + shift + delete is a common shortcut)**
+**If you are having issues with localhost:8080, please clear your cashe & cookies and try again (crtl + shift + delete is a common shortcut)**
