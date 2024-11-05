@@ -16,6 +16,18 @@ body {
     box-sizing: border-box;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.patient-info {
+    text-align: left; 
+    margin-right: 20px; 
+}
+
 .symptom-group {
     background-color: #ddd;
     padding: 10px;
