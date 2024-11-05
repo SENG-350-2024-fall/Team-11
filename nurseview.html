@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ED view" content="first page for ED login">
+    <title>ED view</title>
+    <link rel="stylesheet" href="staff_view.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Mister ED-Nurse</h1>
+    </header>
+    
+    <section>
+
+        <div class="options">
+            <li><button class="func" onclick="helpincomingPatient()">Incoming Patients</button></li>
+            <li><button class="func" onclick="sendprescription()">Send Prescription</button></li>
+            <li><button class="func" onclick="physiciansAvailable()">Physicians Available</button></li>
+            <li><button class="func" onclick="nursesAvailable()">Nurses Available</button></li>
+            <li><button id="tt" class="func" onclick="patientRecords()">Patient Records</button></li>
+            <div class="logout">
+                <button onclick="userLogout()">Logout</button>
+            </div>
+        </div>
+
+
+        <div class="results">
+           <p id="result"></p> 
+           <form id="submit1" action="">
+                Patient name: <input type="text" name="fname"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+    </section>
+    
+    <footer>
+        <p>© 2024 by SENG350 Group 11. All rights reserved.</p>
+    </footer>
+
+    <script src="ED_functions.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
+
+
