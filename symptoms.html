@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mister ED - Virtual Triage</title>
+    <link rel="stylesheet" href="css/symptomstyle.css">
+</head>
+<body>
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a class="active" href="symptoms.html">Virtual Triage</a>
+    </div>
+
+    <div style="padding-left:20px">
+
+        <h1> Symptom Assessment</h1>
+
+        <form action="/submit-symptoms" method="post">
+            <label for="symptoms">Please specify symptoms:</label>
+
+            <div class="symptom-group">
+                <input type="checkbox" id="fever" name="symptoms" value="fever">
+                <label for="fever">Fever</label>
+            </div>
+
+            <div class="symptom-group">
+                <input type="checkbox" id="chest pain" name="symptoms" value="chest pain">
+                <label for="chest pain">Chest pain</label>
+            </div>
+
+            <div class="symptom-group">
+                <input type="checkbox" id="headache" name="symptoms" value="headache">
+                <label for="headache">Headache</label>
+            </div>
+
+
+                <!-- chest pain, difficulty breathing, headache, tooth pain-->
+            
+            <div class="symptom-group">
+                <p>How severe is your pain?</p>
+                <div class="pain-scale">
+                    <input type="radio" name="pain_level" id="pain1" value="1" required>
+                    <label for="pain1">1</label>
+        
+                    <input type="radio" name="pain_level" id="pain2" value="2">
+                    <label for="pain2">2</label>
+                
+                    <input type="radio" name="pain_level" id="pain3" value="3">
+                    <label for="pain3">3</label>
+        
+                    <input type="radio" name="pain_level" id="pain4" value="4">
+                    <label for="pain4">4</label>
+        
+                    <input type="radio" name="pain_level" id="pain5" value="5">
+                    <label for="pain5">5</label>
+                
+                </div>
+                
+                <div class="pain-level-legend">
+                    <span>No Pain</span>
+                    <span>Mild</span>
+                    <span>Moderate</span>
+                    <span>Severe</span>
+                    <span>Extreme</span>
+                </div>
+                
+            </div>
+
+            <label for="Medical History">Medical History:</label>
+            <br>
+            <textarea id="medical_history" name="medical_history" placeholder="Please provide any relevant medical history..."> </textarea>
+            <button type="submit" class="submit-button">Submit Symptoms</button>
+        </form>
+
+    </div>
+</body>
+</html>
