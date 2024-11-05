@@ -1,0 +1,44 @@
+<title>Mister ED - Pharmacist View</title>
+<link rel="stylesheet" href="css/symptomstyle.css">
+</head>
+<body>
+<div class="topnav">
+    <a href="index.html">Home</a>
+    <a class="active" href="pharmacist.html">Pharmacist View</a>
+    <div class="topnav-login">
+        <a id="login-button" href="javascript:void(0);" onclick="userLogout()">Logout</a>
+    </div>
+</div>
+
+<div style="padding-left:20px">
+    <h1> Prescription Input</h1>
+    
+    <form id="prescriptionForm" style="padding-left: 20px;">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName" required><br><br>
+
+        <label for="medication">Medication:</label>
+        <input type="text" id="medication" name="medication" required><br><br>
+        
+        <label for="dosage">Dosage:</label>
+        <input type="text" id="dosage" name="dosage" required><br><br>
+        
+        <label for="frequency">Frequency:</label>
+        <input type="text" id="frequency" name="frequency" required><br><br>
+        
+        <label for="instructions">Instructions:</label>
+        <textarea id="instructions" name="instructions" placeholder="Enter instructions here..."></textarea><br><br>
+
+        <button type="submit" class="button" onclick="submitPrescription()">Submit Prescription</button>
+    </form>
+
+    <div id="result" style="margin-top: 20px;"></div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Mister ED - Virtual Triage</p>
+</footer>
+
+<script src="js/pharmacist.js"></script>
+</body>
+</html>
