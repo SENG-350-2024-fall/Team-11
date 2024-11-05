@@ -1,0 +1,78 @@
+body {
+    background-color:#fffbea;
+    
+}
+ 
+.header {
+    background-color: #79a3b1;
+    padding: 20px;
+    text-align: center;
+}
+
+#submit1 {
+    display: none;
+}
+
+.func {
+    border: none;
+    background: none;
+    color: rgb(13, 13, 14);
+    cursor: pointer;
+    font-size: 20px; 
+    padding: 10px;
+}
+
+section {
+    display: -webkit-flex;
+    display: flex;
+  }
+
+.options{
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #b4dbe7;
+  float: left;
+  width: 20%;
+  height: 380px; 
+  padding: 20px;
+}
+
+.results {
+    font-size: 20px;
+    padding: 0; 
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    flex: 3;
+    background-color: #fffbea;
+    padding: 10px;
+}
+
+.logout {
+    text-align: center;
+    padding: 120px;
+    
+}
+
+.logout button{
+    padding: 8px 16px;
+    color: rgb(14, 13, 13);
+    background-color:#79a3b1 ;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer
+}
+
+.logout button:hover {
+    background-color:#8cc2d4 ;
+}
+
+footer {
+    text-align: center;
+    background-color: #79a3b1;
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
