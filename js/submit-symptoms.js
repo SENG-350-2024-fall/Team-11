@@ -1,3 +1,6 @@
+var logoutButton = document.getElementById("logout-button");
+logoutButton.addEventListener("click", userLogout);
+
 window.onload = function() {
     populateYearOptions();
     populateDayOptions();
@@ -32,4 +35,9 @@ function populateDayOptions() {
         option.textContent = day;
         daySelect.appendChild(option);
     }
+}
+
+function userLogout() {
+    loggedIn("loggedIn", "", -1);  // Expire the cookie
+    window.location.href = "index.html";  // Redirect to login page after logout
 }
