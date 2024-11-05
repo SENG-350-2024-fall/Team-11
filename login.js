@@ -1,4 +1,4 @@
-const { getFirstNameByEmailAndPassword } = require('./database'); // Ensure this matches the exported function
+const {getFirstNameByEmailAndPassword} = require('./database.js'); // Ensure this matches the exported function
 
 var loginButton = document.getElementById("login-button");
 loginButton.addEventListener("click", userLogin);
@@ -57,7 +57,7 @@ function userLogin() {
 //     //     if (foundEmail == "") {
 //     //         //return error, no email exists
 //     //         document.getElementById("login-output").textContent   = "Invalid Email or Password, please try again.";
-//     //         window.location.href = "home.html";
+//     //         window.location.href = "index.html";
 //     //     } else {
 //     //         if (userPassword === foundPass) { //triple = for case sensitiveness
 //     //             //logged in!
