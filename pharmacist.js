@@ -1,16 +1,7 @@
 
-class SubmitPrescriptionCommand {
-    constructor(prescriptionData) {
-        this.prescriptionData = prescriptionData;
-    }
 
-    async execute() {
-        return await sendPrescriptionToDatabase(this.prescriptionData);
-    }
-}
-
-async function submitPrescription() {
-    preventDefault(); 
+async function submitPrescription(event) {
+    event.preventDefault(); 
 
     const prescriptionData = {
         patientName: document.getElementById("patientName").value,
@@ -32,6 +23,31 @@ async function submitPrescription() {
     // Clear form fields after submission
     document.getElementById("prescriptionForm").reset();
 
+}
+
+async function sendPrescriptionToDatabase(prescriptionData) {
+    // Simulating a successful database submission with a timeout
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            j = 0;
+            
+            if (j == 0) { 
+                resolve("Prescription added successfully");
+            } else {
+                reject(new Error("Database submission failed")); 
+            }
+        }, 1000);
+    });
+}
+class SubmitPrescriptionCommand {
+    constructor(prescriptionData) {
+        this.prescriptionData = prescriptionData;
+    }
+
+    async execute() {
+        return await sendPrescriptionToDatabase(this.prescriptionData);
+    }
+}
 
 
 async function retry(fn, retries = 3, delay = 1000) {
@@ -43,23 +59,6 @@ async function retry(fn, retries = 3, delay = 1000) {
             await new Promise(res => setTimeout(res, delay)); // Wait before retrying
         }
     }
-}
-
-async function sendPrescriptionToDatabase(prescriptionData) {
-    // Simulating a successful database submission with a timeout
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            i = 0;
-            
-            if (i = 0) { 
-                resolve("Prescription added successfully");
-            } else {
-                reject(new Error("Database submission failed")); 
-            }
-        }, 1000);
-    });
-}
-
 }
 
 
