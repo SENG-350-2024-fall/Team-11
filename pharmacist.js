@@ -16,7 +16,37 @@ function submitPrescription() {
         instructions: instructions,
     };
 
+    try {
+        // Attempt to submit the prescription with retry
+        const result = await retry(() => sendPrescriptionToDatabase(prescriptionData));
+        document.getElementById("result").textContent = "Prescription submitted successfully!";
+    } catch (error) {
+        document.getElementById("result").textContent = `Failed to submit prescription: ${error.message}`;
+    }
 
+    function databaseAddition(){
+        patientName,
+        medication,
+        dosage,
+        frequency,
+        instructions
+    });
+}
+
+    function sendPrescriptionToDatabase(){
+        setTimeout(() => {
+            // Display success message
+            document.getElementById("result").textContent = "Prescription submitted successfully!";
+            
+            // Clear form fields after submission
+            document.getElementById("prescriptionForm").reset();
+        }, 1000);
+        
+    }
+
+    // Clear form fields after submission
+    document.getElementById("prescriptionForm").reset();
+}
     // Display success message
     document.getElementById("result").textContent = "Prescription submitted successfully!";
     
