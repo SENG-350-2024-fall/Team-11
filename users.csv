@@ -1,0 +1,9 @@
+Fname, Lname, email, password, Utype
+Jon, Smith, test@test.ca, testing123, pt
+Jane,Adams,test1@test.ca,test456,nurse
+Dane,Kepler,test2@test.ca,test789,pharm
+Jane,Doe,test3@test.ca,test1234,pt
+,,,,
+,,,,
+,,,,
+,,,,

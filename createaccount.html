@@ -4,6 +4,7 @@
     <title>Mister ED</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/create-account.css">
+    <!-- <script type="text/javascript" src="createaccount.js"></script> -->
 </head>
 <body> 
     <div class="topnav">
@@ -14,27 +15,33 @@
         </div>
     </div>
     <div style="padding-left:16px">
-        <h1>Welcome to Mister ED</h1>
+        <h1 style="text-align:center;">Welcome to Mister ED</h1>
     </div>
     <main>
-        <p style="text-align: center;">Not implemented yet! Please check back later :)</p>
-        <br><br><br><br><br>
+        <!-- <p style="text-align: center;">Not implemented yet! Please check back later :)</p> -->
+        
         <div class="login-center" style="width: 50%; text-align: center;">
-            <form>
+            <!-- <form> -->
                 <!-- first and last name of pt -->
                 <label for="fname">First name</label><br>
-                <input class="create-input" type="text" id="fname" name="fname"><br>
+                <input class="create-input" type="text" id="InputFname" name="fname"><br>
                 <label for="lname">Last name</label><br>
-                <input class="create-input" type="text" id="lname" name="lname"><br>
+                <input class="create-input" type="text" id="InputLname" name="lname"><br>
                 <!-- pt email and password for account -->
                 <label for="email">Email</label><br>
-                <input class="create-input" type="text" id="email" name="email"><br>
+                <input class="create-input" type="text" id="InputEmail" name="email"><br>
                 <label for="password">Password</label><br>
-                <input class="create-input" type="text" id="password" name="password"><br>
+                <input class="create-input" type="text" id="InputPassword" name="password"><br>
                 <label for="password-conf">Confirm Password</label><br>
                 <input class="create-input" type="text" id="password-conf" name="password-conf">
-              </form>
+              <!-- </form> -->
+              <br>
+              <button  onclick="createAccount();">Create Account</button>
+              <p id="login-output"></p>
+              <script src="createaccount.js"></script>
         </div>
+        <br><br><br>
+        <p style="text-align:center;">Not a patient? Send us an email at seng350group11@gmail.com to get yourself added to our providers list!</p>
     </main>
     <footer>
         <p>© 2024 by SENG350 Group 11. All rights reserved.</p>

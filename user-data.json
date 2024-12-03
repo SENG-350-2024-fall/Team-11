@@ -1,0 +1,30 @@
+{
+    "success": true,
+    "users-data": [
+        {
+            "id": "1",
+            "fname": "Jon",
+            "lname": "Smith",
+            "email": "test@test.ca",
+            "password": "test123",
+            "utype": "pt"
+        },
+        {
+            "id": "2",
+            "fname": "Jane",
+            "lname": "Doe",
+            "email": "test1@test.ca",
+            "password": "test456",
+            "utype": "nurse"
+        },
+        {
+            "id": "3",
+            "fname": "Jon",
+            "lname": "Doe",
+            "email": "test2@test.ca",
+            "password": "test789",
+            "utype": "pt"
+        }
+    ]
+
+}

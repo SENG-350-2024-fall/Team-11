@@ -1,3 +1,4 @@
+
 // Create a MongoDB client, open a connection to DocDB as a replica set
 var MongoClient = require('mongodb').MongoClient;
 
