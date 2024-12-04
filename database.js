@@ -1,6 +1,10 @@
-var mysql = require('mysql');
+import http from 'http';
+import mysql from 'mysql'
+import { parse } from 'url';
 
-var con = mysql.createConnection({
+// import mysql from './node_modules/mysql2/promise';
+
+var db = mysql.createConnection({
   host: "sql3.freesqldatabase.com",
   user: "sql3749573",
   password: "rIUG8WrNgK",
@@ -8,19 +12,51 @@ var con = mysql.createConnection({
   port: 3306
 });
 
+db.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+// Create a simple HTTP server
+const server = http.createServer((req, res) => {
+  const { pathname } = parse(req.url, true);
+
+  // Respond to a GET request to /api/users
+  if (pathname === '/api/users' && req.method === 'GET') {
+      db.query('SELECT * FROM Users', (err, results) => {
+          if (err) {
+              res.writeHead(500, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ error: 'Error fetching users' }));
+              return;
+          }
+
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(results));
+      });
+  } else {
+      // Handle 404 for other paths
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('Not Found');
+  }
+});
+
+// Start the server
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
+});
+
+// export default db
+
+
 // con.connect(function(err) {
 //   if (err) throw err;
-//   console.log("Connected!");
+//   //Select all customers and return the result object:
+//   con.query("SELECT * FROM Users", function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);
+//   });
 // });
-
-con.connect(function(err) {
-  if (err) throw err;
-  //Select all customers and return the result object:
-  con.query("SELECT * FROM Users", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
-});
 
 
 // import { createClient } from '@supabase/supabase-js'
