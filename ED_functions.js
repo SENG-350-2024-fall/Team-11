@@ -1,100 +1,72 @@
-// NewPatient class to represent a incoming patient
-class NewPatient {
-    constructor(username, recordID, diagnosis, ED) {
-        this.username = username;
-        this.recordID = recordID;
-        this.diagnosis = diagnosis;
-        this.ED = ED; // Add ED parameter to store emergency department location
-    }
+// function implementations for ED, nurse and clinic users
+
+//ED: 
+//ED user should gets notified when a patient submit symptoms (uses observer design pattern ) 
+//incomming patient information is displyed in ED view 
+//ED recieve priscription submission from clinic/nurse users and make final submission to chemist
+
+//Nurse
+//nurse user should gets notified when a patient submit symptoms (uses observer design pattern )
+//nurse submits presccription to database 
+//nurses have access to patient records
+ 
+//clinic 
+//clinic user should get notified if a patients is directed to the clinic 
+//clinic have access to patient records for patient visiting the clinic 
+//clinic submits prescription to database
+
+//front-end js 
+
+//checks database every hour and prints all patients ????
+function helpincomingPatient() {
+    window.location.href = "patient_info.html";
 }
  
-//mock incomming patient data 
-patient1 = new NewPatient("Tina Smith", "123456", "Leg injury", "City Hospital Emergency (123 Main St)");
+fetch('/api/patients')
+     .then(response => {
+          if (!response.ok) {
+                 throw new Error(`HTTP error! Status: ${response.status}`);
+             }
+             return response.json();
+         })
+     .then(patients => {
+          // Display patient info on the page
+         const patientTable = document.getElementById('patientTable');
+         patients.forEach(patient=> {
+            const row = document.createElement('tr');
+            row.innerHTML = ` <td>${patient.username}</td>
+                              <td>${patient.recordID}</td>
+                              <td>${patient.age}</td>
+                              <td>${patient.diagnosis}</td> `;
+            patientTable.appendChild(row);
+        })
+        })
+     .catch(error => console.error('Error fetching patient data:', error));  
+   
 
-// Observer implementation class
-class ObserverImplementation {
-    constructor() {
-        this.observers = []; // Array to hold observers
-        this.np = null;      // Placeholder for a NewPatient instance
-    }
-    // Method to add an observer to the list
-    addObserver(observer) {
-        this.observers.push(observer);
-    }
-    // Method to remove an observer from the list
-    removeObserver(observer) {
-        this.observers = this.observers.filter(obs => obs !== observer);
-    }
-    // Method to set the new patient and notify observers
-    addNewPatient() {
-        this.np = patient1 
-        this.notifyObservers();   
-    }
-    // Method to notify all observers about the new patient
-    notifyObservers() {
-        this.observers.forEach(observer => observer(this.np));
-    }
-}
 
-// Function to display incoming patient information
-function incomingPatient(np) {
-    const resultElement = document.getElementById("result");
-    document.getElementById("submit1").style.display = "none";
-    resultElement.innerHTML = `Name: ${np.username}
-    Record ID: ${np.recordID}
-    Diagnosis: ${np.diagnosis}
-    Directed ED: ${np.ED}`;
-}
+    
+// Connect to the SSE endpoint
+const eventSource = new EventSource('/events');
 
-// Initialize ObserverImplementation instance
-const observerImpl = new ObserverImplementation();
-// Add displayIncomingPatient as an observer
-observerImpl.addObserver(incomingPatient);
+// Listen for messages
+eventSource.onmessage = (event) => {
+    const patient = JSON.parse(event.data);
+    let patientname = patient.username;
+    alert(`New Patient Added:${patientname}`);
+};
 
-// Function to trigger the addition of a new patient and notify observers
-function helpincomingPatient() {
-    observerImpl.addNewPatient();
-}
+// Handle errors
+eventSource.onerror = () => {
+    console.error("Error connecting to SSE.");
+    eventSource.close();
+};
+
 
 //flags for implementing availability tactic- removal of service. 
-//leaving nursesAvailable() and physiciansAvailable() functiond out of sevice for now
-let physiciansAvailableFlag = false;
-let nursesAvailableFlag = false;
 let sendprescriptionFlag =true;
 let patientRecordsflag =true; 
 
-
-// Function to toggle physician availability
-function togglePhysicianAvailability() {
-    physiciansAvailableFlag = !(physiciansAvailableFlag);
-}
-
-// Function to toggle nurse availability
-function toggleNurseAvailability() {
-    nursesAvailableFlag = !(nursesAvailableFlag);
-}
-
-// Function to display physician availability based on flag
-function physiciansAvailable() {
-    const resultElement = document.getElementById("result");
-    document.getElementById("submit1").style.display = "none";
-    if (physiciansAvailableFlag) {
-        resultElement.textContent = "Physicians available.";
-    } else {
-        resultElement.textContent = "Service not available";
-    }
-}
-
-// Function to display nurse availability based on flag
-function nursesAvailable() {
-    const resultElement = document.getElementById("result");
-    document.getElementById("submit1").style.display = "none";
-    if (nursesAvailableFlag) {
-        resultElement.textContent = "Nurses available.";
-    } else {
-        resultElement.textContent = "Service not available";
-    }
-}
 
 // Function to toggle patient records
 function togglepatientRecords() {
@@ -104,10 +76,16 @@ function togglepatientRecords() {
 function patientRecords() {
     const resultElement = document.getElementById("result");
     resultElement.textContent = ""
-    var form = document.getElementById("submit1");
-    form.style.display = "none";
+    var form2 = document.getElementById("nurse");
+    var form3  = document.getElementById("Physicians");
+    var form4  = document.getElementById("ED");
+    var form1 = document.getElementById("submit1");
+    //form1.style.display = "none";
+    form2.style.display = "none";
+    form3.style.display = "none";
+    //form4.style.display = "none";
     if(patientRecordsflag){
-        form.style.display = "block";
+        form1.style.display = "block";
         }
         else{
             resultElement.textContent = "Service not available";
@@ -120,10 +98,8 @@ function togglesendprescription() {
 }
 
 function sendprescription() {
-    const resultElement = document.getElementById("result");
-    document.getElementById("submit1").style.display = "none";
     if(sendprescriptionFlag){
-    resultElement.textContent = " ";
+    window.location.href = "pharm-view.html";
     }
     else{
         resultElement.textContent = "Service not available";

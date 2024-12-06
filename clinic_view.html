@@ -1,24 +1,27 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ED view" content="first page for ED login">
+    <meta name="ED view" content="first page after physician login">
     <title>ED view</title>
     <link rel="stylesheet" href="staff_view.css">
 </head>
 <body>
     <header class="header">
-        <h1>Mister ED-Emergency Department</h1>
+        <h1>Mister ED-Physicians</h1>
     </header>
     <section>
 
         <div class="options">
-            <li><button class="func" onclick="helpincomingPatient()">Patients Queue</button></li>
+            <li><button class="func" onclick="helpincomingPatient()">Incoming Patients</button></li>
+            <li><button class="func" onclick="sendprescription()">Send Prescription</button></li>
+            <li><button class="func" onclick="physiciansAvailable()">Physicians Available</button></li>
             <li><button id="tt" class="func" onclick="patientRecords()">Patient Records</button></li>
-            <li><button class="func" onclick="sendprescription()">Prescription Requests</button></li>
             <div class="logout">
                 <button onclick="userLogout()">Logout</button>
             </div>
+        </div>
             
         </div>
 
@@ -29,8 +32,8 @@
                 Record ID: <input type="text" name="recordID"><br>
                 <input type="submit" value="Submit">
             </form>
-            <p id="nurse">To login as nurse, click here: <a href="/nurse_users">Nurse Login</a></p>
-            <p id="Physicians">To login as physician, click here: <a href="/clinic_users">Physician Login</a></p>
+            <p id="ED">To login as ED user, click here: <a href="/ED_users">ED Login</a></p>
+            <p id="nurse">To login as nurse, click here: <a href="/nurse_users">nurse Login</a></p>
         </div>
 
     </section>

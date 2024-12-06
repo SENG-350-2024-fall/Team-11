@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5">
+    <title>Patient Information</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', Helvetica, sans-serif;
+            background-color: #fffbea;
+            color: #333;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f4f4f4;
+        }
+        .print-btn {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .print-btn:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            background-color: #79a3b1;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+             width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Patient Information</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Record ID</th>
+                <th>Age</th>
+                <th>Diagonis</th>
+            </tr>
+        </thead>
+        <tbody id="patientTable">
+            <!-- Patient details will be populated here -->
+        </tbody>
+    </table>
+    <button class="print-btn" onclick="">Edit queue</button>
+    <footer>
+        <p>© 2024 by SENG350 Group 11. All rights reserved.</p>
+    </footer>
+    <script src="ED_functions.js"></script>
+
+    
+</body>
+</html>
