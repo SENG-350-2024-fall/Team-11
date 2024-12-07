@@ -48,15 +48,15 @@ function createAccount() {
         //get maxUID for incrementing purposes (ie if a user is deleted their uid remains unique, to ensure no cross-contamination with Patients table)
         var newUID = getNewUID()
 
-        // var sqlInsert = "INSERT INTO Users (fname, lname, email, password, utype, uid) VALUES ?";
+        var sqlInsert = "INSERT INTO Users (fname, lname, email, password, utype, uid) VALUES ?";
 
-        // // var newUID = con.query();
-        // var values = [fnameinput, lnameinput, emailinput, passwordinput, "pt", newUID];
+        // var newUID = con.query();
+        var values = [fnameinput, lnameinput, emailinput, passwordinput, "pt", newUID];
 
-        // db.query(sqlInsert, [values], function (err, result) {
-        //     if (err) throw err;
-        //     console.log("Number of records inserted: " + result.affectedRows);
-        //   });
+        db.query(sqlInsert, [values], function (err, result) {
+            if (err) throw err;
+            console.log("Number of records inserted: " + result.affectedRows);
+          });
 
         // let newUser = {
         //     "id": newID,
@@ -102,21 +102,21 @@ function createAccount() {
 async function getNewUID() {
     const query = 'SELECT MAX(uid) AS maxUid FROM Users';
     try {
-        const response = await fetch('http://localhost:3000/api/users');  // Fetch data from the server
-        const data = await response.json();  // Parse the response as JSON
+        // const response = await fetch('http://localhost:3000/api/users');  // Fetch data from the server
+        // const data = await response.json();  // Parse the response as JSON
 
-        if (response.ok) {
-            // Assuming data contains an array of users and the max uid is calculated server-side
-            const maxUid = data[0]?.maxUid || 0;  // Get the maxUid from the response (if it exists)
-            const newUID = maxUid + 1;  // Increment maxUid to get the new unique ID
-            return newUID;  // Return the new unique ID
-        } else {
-            throw new Error('Failed to fetch max UID');
-        }
-        // const [rows] = await db.execute(query); // Use db.query(query) if not using prepared statements
-        // const maxUid = rows[0].maxUid || 0; // Use 0 if there are no rows
-        // const newUID = maxUid + 1; // Increment to generate the new unique ID
-        // return newUID;
+        // if (response.ok) {
+        //     // Assuming data contains an array of users and the max uid is calculated server-side
+        //     const maxUid = data[0]?.maxUid || 0;  // Get the maxUid from the response (if it exists)
+        //     const newUID = maxUid + 1;  // Increment maxUid to get the new unique ID
+        //     return newUID;  // Return the new unique ID
+        // } else {
+        //     throw new Error('Failed to fetch max UID');
+        // }
+        const [rows] = await db.execute(query); // Use db.query(query) if not using prepared statements
+        const maxUid = rows[0].maxUid || 0; // Use 0 if there are no rows
+        const newUID = maxUid + 1; // Increment to generate the new unique ID
+        return newUID;
     } catch (error) {
         console.error('Error fetching max uid:', error);
         throw error;
