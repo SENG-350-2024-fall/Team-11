@@ -1,49 +1,63 @@
 
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mister ED - Pharmacist View</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/pharm-style.css">
 </head>
 <body>
     <div class="topnav">
-        <a href="index.html">Home</a>
-        <a class="active" href="pharmacist.html">Pharmacist View</a>
+        <a href="/">Home</a>
+        <a class="active" href="/pharm-view.html">Pharmacist View</a>
+        <a href="nurseview.html"> Nurse View</a>
+        <a href="ED_view.html"> Emergency Department</a>
         <div class="topnav-login">
             <a id="login-button" href="javascript:void(0);" onclick="userLogout()">Logout</a>
         </div>
     </div>
-
-    <div style="padding-left:20px; text-align: center">
-        <h1> Prescription Input</h1>
-        
-        <form id="prescriptionForm" style="padding-left: 20px; text-align: center;"  onsubmit="submitPrescription(event)">
-            <label for="patientName">Patient Name:</label>
-            <input type="text" id="patientName" name="patientName" required><br><br>
-
-            <label for="medication">Medication:</label>
-            <input type="text" id="medication" name="medication" required><br><br>
-            
-            <label for="dosage">Dosage:</label>
-            <input type="text" id="dosage" name="dosage" required><br><br>
-            
-            <label for="frequency">Frequency:</label>
-            <input type="text" id="frequency" name="frequency" required><br><br>
-            
-            <label for="instructions">Instructions:</label>
-            <textarea id="instructions" name="instructions" placeholder="Enter instructions here..."></textarea><br><br>
-
-            <button type="submit" class="button">Submit Prescription</button>
-        </form>
-
-        <div id="result" style="margin-top: 20px; font-weight: bold; color: green;"></div>
+    <div style="padding: 20px;">
+        <!-- Patient Search Section -->
+        <div style="max-width: 600px; margin: 0 auto 30px auto;">
+            <h2>Patient Medication Search</h2>
+            <div style="margin-bottom: 15px;">
+                <input
+                    type="text"
+                    id="patientSearch"
+                    placeholder="Enter patient name..."
+                    style="width: 70%; padding: 8px; margin-right: 10px;"
+                >
+                <button id="searchButton">Search</button>
+            </div>
+            <div id="searchResults" style="margin-top: 15px;"></div>
+        </div>
+        <!-- Prescription Form -->
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2>New Prescription</h2>
+            <form id="prescriptionForm">
+                <div style="margin-bottom: 15px;">
+                    <label for="patientId">Patient ID:</label>
+                    <input type="text" id="patientId" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="prescription">Medication Name:</label>
+                    <input type="text" id="prescription" required>
+                </div>
+                <button type="submit">Submit Prescription</button>
+            </form>
+            <div id="result" style="margin-top: 20px;"></div>
+        </div>
+        <!-- Unfilled Prescriptions -->
+        <div id="unfilled-prescriptions">
+            <h2>Unfilled Prescriptions</h2>
+            <div style="width: 33%; margin-right: 200px; background-color: white"id="prescriptionList"></div>
+        </div>
     </div>
-
-    <footer>
+    <footer
         <p>© 2024 by SENG350 Group 11. All rights reserved.</p>
     </footer>
-
-    <script src="pharmacist.js"></script>
+   
+    <script src="/pharmacist.js"></script>
 </body>
 </html>
